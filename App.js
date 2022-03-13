@@ -1,13 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 import { StyleSheet, Text, View,Button,Alert } from 'react-native';
 
 
 export default function App() {
+
+  const [name,setName] = useState('shakhawat');
+
+  const clickHandler = () =>{
+    setName('hossain')
+  }
+
   return (
     <View style={styles.container}>
       
       
-      <Text>Shakhawat Rocks !!</Text>
+      <Text> my name is {name}</Text>
       <Text style={{color:'green'}}>React Native is good and i am comming for you </Text>
 
       <Text style = {styles1.bigBlue}  > this is a new line  </Text>
@@ -17,7 +25,7 @@ export default function App() {
       <View >
       <Button 
       title={'React Native Elements'}
-      onPress={() => Alert.alert('Simple Button pressed')}
+      onPress={clickHandler}
       color="#f194ff"
       
       />
@@ -38,6 +46,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  
+
 });
 
 
