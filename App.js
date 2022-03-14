@@ -1,40 +1,57 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, View,Button,Alert } from 'react-native';
+import { StyleSheet, Text, View,Button,Alert,TextInput } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+
 
 
 export default function App() {
 
-  const [name,setName] = useState('shakhawat');
+  const [name1,setName1] = useState('');
+  const [name2,setName2] = useState('');
+  const [temp,setTemp] = useState('');
   const [person,setPerson] = useState({name:'mario',age:40});
 
-  const clickHandler = () =>{
-    setName('hossain');
-    setPerson({name:'bros' , age: 90}); 
+  const clickHandler = () =>
+  {
+    setTemp(parseFloat(name1) + parseFloat(name2) )
   }
+
+
 
   return (
     <View style={styles.container}>
-      
-      
-      <Text> my name is {name}</Text>
-      <Text style={{color:'green'}}>React Native is good and i am comming for you </Text>
-      
-      <Text>the name is {person.name} and the age is {person.age}</Text>
-
-
-      <Text style = {styles1.bigBlue}  > this is a new line  </Text>
-      
-      <Text style ={styles1.darkblue} > this is another new line </Text>
-
-      <View >
-      <Button 
-      title={'React Native Elements'}
-      onPress={clickHandler}
-      color="#f194ff"
-      
+  
+      <TextInput
+      style = {styles.input}
+      placeholder='input'
+      keyboardType= 'numeric'
+      onChangeText={(val) => setName1(val) } 
       />
+
+        
+      <TextInput
+      style = {styles.input}
+      placeholder='input'
+      keyboardType= 'numeric'
+      onChangeText={(val) => setName2(val) } 
+      />
+
+      <View>
+        <Button
+
+        title='add'
+        
+        onPress={ clickHandler }
+
+        />
       </View>
+
+      <View>
+        <Text> {temp} </Text>
+      </View>
+
+      
 
       <StatusBar style="auto" />
     </View>
@@ -51,6 +68,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  input :{
+    borderWidth: 3,
+    borderColor: '#000000',
+    padding: 8,
+    margin: 5,
+  }
 
   
 
