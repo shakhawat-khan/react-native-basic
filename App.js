@@ -6,9 +6,11 @@ import { StyleSheet, Text, View,Button,Alert } from 'react-native';
 export default function App() {
 
   const [name,setName] = useState('shakhawat');
+  const [person,setPerson] = useState({name:'mario',age:40});
 
   const clickHandler = () =>{
-    setName('hossain')
+    setName('hossain');
+    setPerson({name:'bros' , age: 90}); 
   }
 
   return (
@@ -17,6 +19,9 @@ export default function App() {
       
       <Text> my name is {name}</Text>
       <Text style={{color:'green'}}>React Native is good and i am comming for you </Text>
+      
+      <Text>the name is {person.name} and the age is {person.age}</Text>
+
 
       <Text style = {styles1.bigBlue}  > this is a new line  </Text>
       
