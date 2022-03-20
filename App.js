@@ -8,6 +8,8 @@ import {
   TextInput,
   Text,
   ScrollView,
+  FlatList,
+  TouchableOpacity,
 } from "react-native";
 
 import { Colors } from "react-native/Libraries/NewAppScreen";
@@ -23,17 +25,24 @@ export default function App() {
     { name: "emum", key: 7 },
   ]);
 
+  const pressHandler = (key) => {
+    console.log(key);
+    setPeople((prevPeople) => {
+      return prevPeople.filter((person) => person.key != key);
+    });
+  };
+
   return (
     <View>
-      <ScrollView>
-        {people.map((item) => {
-          return (
-            <View key={item.key}>
-              <Text style={styles.Item}>{item.name}</Text>
-            </View>
-          );
-        })}
-      </ScrollView>
+      <FlatList
+        keyExtractor={(item) => item.key}
+        data={people}
+        renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => pressHandler(item.key)}>
+            <Text style={styles.Item}> {item.name} </Text>
+          </TouchableOpacity>
+        )}
+      />
     </View>
   );
 }
